@@ -42,17 +42,14 @@ def cos(x):
 
 
 def exp(x):
-    if x < 0:
-        return 1 / exp(-x)
-    if x > 2:
-        half_exp = exp(x / 2)
-        return half_exp * half_exp
-    
-    result = 0
-    term = 1
-    for n in range(50):
+    result = 1.0
+    term = 1.0
+    n = 1
+    while True:
+        term *= x / n
+        prev = result
         result += term
-        term *= x / (n + 1)
-        if abs(term) < 1e-15:
+        if abs(result - prev) < 1e-15 or n >= 100:
             break
+        n += 1
     return result
