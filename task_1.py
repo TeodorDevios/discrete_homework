@@ -53,3 +53,8 @@ def exp(x):
             break
         n += 1
     return result
+
+if __name__ == '__main__':
+    print(sin(113))
+    print(cos(113))
+    print(exp(113))
