@@ -1,39 +1,43 @@
 import random
+def task1():
+    def cross_product(v1, v2):
+        x = v1[1] * v2[2] - v1[2] * v2[1]
+        y = v1[2] * v2[0] - v1[0] * v2[2]
+        z = v1[0] * v2[1] - v1[1] * v2[0]
+        return [x, y, z]
+    
+    print("Введите 6 чисел - координаты двух векторов")
+    num1 = float(input("Число 1: "))
+    num2 = float(input("Число 2: "))
+    num3 = float(input("Число 3: "))
+    num4 = float(input("Число 4: "))
+    num5 = float(input("Число 5: "))
+    num6 = float(input("Число 6: "))
+    
+    v1 = [num1, num2, num3]
+    v2 = [num4, num5, num6]
+    
+    result = cross_product(v1, v2)
+    print("Результат:", result)
 
-print("=" * 50)
-print("ЗАДАНИЕ 1: ВЕКТОРНОЕ ПРОИЗВЕДЕНИЕ")
-print("=" * 50)
 
-print("\nВведите 6 чисел - координаты двух векторов (x1 y1 z1 x2 y2 z2):")
-coords = list(map(float, input().split()))
-
-x1, y1, z1, x2, y2, z2 = coords
-
-i = y1 * z2 - z1 * y2
-j = z1 * x2 - x1 * z2
-k = x1 * y2 - y1 * x2
-
-result = [i, j, k]
-print(f"\nВекторное произведение: {result}")
-
-print("\n" + "=" * 50)
-print("ЗАДАНИЕ 2: ИГРА НА СУММУ")
-print("=" * 50)
-
-n = random.randint(10, 100)
-k = random.randint(2, 6)
-
-print(f"\nЧисло: {n}")
-print(f"Количество чисел: {k}")
-print(f"Введите {k} РАЗНЫХ чисел, сумма которых равна {n}:")
-
-numbers = list(map(float, input().split()))
-
-if len(numbers) != k:
-    print("Ты проиграл! Количество чисел не совпадает!")
-elif len(numbers) != len(set(numbers)):
-    print("Ты проиграл! Есть одинаковые числа!")
-elif sum(numbers) == n:
-    print("Ты выиграл! Правильно!")
-else:
-    print(f"Ты проиграл! Сумма равна {sum(numbers)}, а должна быть {n}!")
+def task2():
+    n = random.randint(10, 100)
+    k = random.randint(2, 7)
+    
+    print(f"Сумма должна быть: {n}")
+    print(f"Введи {k} разных чисел")
+    
+    numbers = []
+    for i in range(k):
+        num = float(input(f"Число {i+1}: "))
+        numbers.append(num)
+    
+    print(f"Твои числа: {numbers}")
+    
+    if len(numbers) != len(set(numbers)):
+        print("Ты проиграл! Есть повторяющиеся числа!")
+    elif sum(numbers) == n:
+        print("Ты выиграл! Сумма правильная!")
+    else:
+        print(f"Ты проиграл! Сумма равна {sum(numbers)}, а нужно {n}")
